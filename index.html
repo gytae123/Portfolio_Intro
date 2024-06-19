@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./styles/modern-normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/components/header.css">
+    <link rel="stylesheet" href="./styles/components/hero.css">
+    <link rel="stylesheet" href="./styles/components/about.css">
+    <link rel="stylesheet" href="./styles/components/featured.css">
+    <link rel="stylesheet" href="./styles/components/mobile-nav.css">
+    <link rel="stylesheet" href="./styles/components/work.css">
+    <link rel="stylesheet" href="./styles/components/contact.css">
+    <link rel="stylesheet" href="./styles/components/footer.css">
+    <link rel="stylesheet" href="./styles/utils.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .work__project-description1,
+        .work__project-description2,
+        .featured__info-container {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease-out;
+        }
+
+        .animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <ul class="header__menu">
+                <li>
+                    <a class="header__link" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="header__link" href="#featured">Work</a>
+                </li>
+                <li>
+                    <a class="header__link" href="#contact">Contact</a>
+                </li>
+                <li class="header__line"></li>
+                <li>
+                    <button aria-label="theme-toggle btn" id="theme-toggle" class="header__sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <a class="header__resume btn" href="#">To TOP</a>
+                </li>
+            </ul>
+            <button class="header__bars">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 햄버거 메뉴 시작 -->
+    <!-- <div class="mobile-nav">
+        <nav>
+            <ul class="mobile-nav__menu">
+                <li>
+                    <a class="mobile-nav__link" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="mobile-nav__link" href="#featured">Work</a>
+                </li>
+                <li>
+                    <a class="mobile-nav__link" href="#contact">Contact</a>
+                </li>
+                <li class="mobile-nav__link-line"></li>
+                <li>
+                    <button aria-label="theme-toggle btn" id="theme-toggle" class="mobile-nav__sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <a class="mobile-nav__btn btn" href="#">Resume</a>
+                </li>
+            </ul>
+        </nav>
+    </div> -->
+    <!-- 햄버거 메뉴 끝 -->
+
+    <main>
+        <section class="hero container">
+            <img class="hero__img" src="./img/입사지원서.jpg" alt="Profile_picture" />
+            <h2 class="hero__subtitle">안녕하세요. 고영태입니다.</h2>
+            <h1 class="hero__title"><span class="left">프론트엔드 웹개발자입니다.</span></h1>
+            <p class="hero__description">누구보다 열정적으로 <strong>프론트엔드 웹개발을 하고자 하는 노력가</strong>이자<br>새로운 기술을 배우는 데에
+                <strong>굉장히 열정적인 사람</strong>임을 말씀드리고 싶습니다.<br>
+                많이 보고 배우고 싶은 주니어 개발자입니다.
+            </p>
+            <a class="hero__btn btn" href="mailto:gytae123@gmail.com" target="_blank">Reach Out</a>
+        </section>
+        <section id="about" class="about container section">
+            <div class="about__content content">
+                <h2 class="about__title letter">About</h2>
+                <p class="about__description letter">
+                    안녕하십니까, 저는 고영태라고 합니다. <strong>프론트엔드 웹개발자</strong>를 희망하고 있으며 장래에는 풀스택 개발자를
+                    간절히 희망합니다. 저는 아침에 일어나면 우선 이불부터 개며 방 정리를 하는 것으로 긍정적인 하루를 시작할 줄 아는 사람입니다. <strong>긍정적인 하루의 시작에는 긍정적인
+                        코딩의 첫 단추가 따라오기 마련</strong>입니다.
+                </p>
+                <p class="about__description letter">
+                    저는 기존의 알고있는 기술들을 복기하는 것과 새로운 기술들을 배우는 데에 커다란 관심을 가지고 있습니다.
+                </p>
+                <p class="about__description letter">
+                    제 강점은 팀 내에서 팀워크를 발휘하는 것이며 사용자 경험을 최적화하고 버그 수정에 노력을 기울이는 것입니다.
+                </p>
+                <p class="about__description letter">
+                    최신 기술 추세를 학습하고, 이러한 점을 바탕으로 한 명의 프론트엔드로서 팀의 개발에 기여하고자 합니다.
+                </p>
+                <hr class="about__hr letter">
+                <h3 class="about__subtitle letter">사용가능한 기술</h3>
+                <div class="about__ul-container content">
+                    <ul class="about_ul">
+                        <li class="about__list letter">HTML</li>
+                        <li class="about__list letter">CSS</li>
+                    </ul>
+                    <ul class="about_ul">
+                        <li class="about__list letter">Javascript</li>
+                        <li class="about__list letter">jQuery</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about__img-wrapper content">
+                <img class="about__img letter" src="./img/입사지원서.jpg" alt="Profile_picture" />
+            </div>
+        </section>
+
+
+
+
+
+        <section id="featured" class="featured container section">
+            <h3 class="featured__subtitle">Featured Projects</h3>
+            <h2 class="featured__sogae">소개합니다.</h2>
+            <p class="featured__description">
+                2024년 1월 ~ 6월 동안 진행된 제 프로젝트들을 간단히 소개합니다. 사이드 프로젝트와 팀 프로젝트가 있습니다.
+            </p>
+            <div class="featured__wrapper">
+                <h2 class="featured__title">Mr. Martens (미스터 마틴)</h2>
+                <a class="featured__link" href="https://github.com/gytae123/Portfolio_2" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                    </svg>
+                </a>
+            </div>
+            <p class="work__project-description1">
+                신발 판매 사이트 '미스터 마틴'입니다.
+            </p>
+            <p class="work__project-description2">
+                닥터마틴 웹사이트를 기본으로 참고하였으며, 10개가 넘어가는 복잡한 제품군을 축소시켜<br>3개의 큰 틀(단화, 부츠, 샌들)로 구분하여 사이트를 재설계하였습니다.
+            </p>
+            <div class="featured__info-container">
+                <div>
+                    <h3 class="featured__label">기술 환경</h3>
+                    <ul class="featured__tech-stack">
+                        <li class="featured__info">HTML5</li>
+                        <li class="featured__info">CSS3</li>
+                        <li class="featured__info">Javascript</li>
+                        <li class="featured__info">AJAX</li>
+                        <li class="featured__info">Apache Tomcat 9.0.88</li>
+                        <li class="featured__info">MySQL</li>
+                        <li class="featured__info"><strong>intelliJ</strong></li>
+                        <li class="featured__info"><strong>VS Code</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="featured__label">Project Type</h3>
+                    <p class="featured__info">Fullstack</p>
+                </div>
+                <div>
+                    <h3 class="featured__label">Timeline</h3>
+                    <p class="featured__info">2024.05.22 ~ 2024.06.03</p>
+                </div>
+            </div>
+            <div class="featured__img-container">
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(17).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(18).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(20).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(21).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(22).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(24).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(25).png" alt="Mr.Martens" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(26).png" alt="Mr.Martens" />
+                </div>
+            </div>
+        </section>
+
+        <section class="featured container section">
+            <h3 class="featured__subtitle">Featured Projects</h3>
+            <div class="featured__wrapper">
+                <h2 class="featured__title">Mann Trousers (만 트라우저스)</h2>
+                <a class="featured__link" href="https://github.com/gytae123/Portfolio_1" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                    </svg>
+                </a>
+            </div>
+            <p class="work__project-description1">
+                맞춤 바지 전문 제작 사이트 '만 트라우저스'입니다.
+            </p>
+            <p class="work__project-description2">
+                평소 알던 지인 분을 위해 테스트용으로 해당 웹페이지를 제작해드렸습니다.<br>전체적으로 무난하고 심플하게 제작되었습니다.
+            </p>
+            <div class="featured__info-container">
+                <div>
+                    <h3 class="featured__label">기술 환경</h3>
+                    <ul class="featured__tech-stack">
+                        <li class="featured__info">HTML5</li>
+                        <li class="featured__info">CSS3</li>
+                        <li class="featured__info">Javascript</li>
+                        <li class="featured__info">jQuery</li>
+                        <li class="featured__info"><strong>VS Code</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="featured__label">Project Type</h3>
+                    <p class="featured__info">Front-end</p>
+                </div>
+                <div>
+                    <h3 class="featured__label">Timeline</h3>
+                    <p class="featured__info">2024.04.13 ~ 2024.04.14</p>
+                </div>
+            </div>
+            <div class="featured__img-container">
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(27).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(28).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(29).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(30).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(31).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(32).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(33).png" alt="Mann_Trousers" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(34).png" alt="Mann_Trousers" />
+                </div>
+            </div>
+        </section>
+
+        <section class="featured container section">
+            <h3 class="featured__subtitle">Featured Projects</h3>
+            <div class="featured__wrapper">
+                <h2 class="featured__title">The Comma (더 콤마)</h2>
+                <a class="featured__link" href="https://github.com/gytae123/Portfolio_4" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                    </svg>
+                </a>
+            </div>
+            <p class="work__project-description1">
+                가상 인터넷 쇼핑몰 '더 콤마'입니다.
+            </p>
+            <p class="work__project-description2">
+                기존에 존재하는 웹페이지를 클론 코딩하였습니다.
+            </p>
+            <div class="featured__info-container">
+                <div>
+                    <h3 class="featured__label">기술 환경</h3>
+                    <ul class="featured__tech-stack">
+                        <li class="featured__info">HTML5</li>
+                        <li class="featured__info">CSS3</li>
+                        <li class="featured__info">Javascript</li>
+                        <li class="featured__info">jQuery</li>
+                        <li class="featured__info"><strong>VS Code</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="featured__label">Project Type</h3>
+                    <p class="featured__info">Front-end</p>
+                </div>
+                <div>
+                    <h3 class="featured__label">Timeline</h3>
+                    <p class="featured__info">2024.06.14 ~ 2024.06.18</p>
+                </div>
+            </div>
+            <div class="featured__img-container">
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(39).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(40).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(41).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(42).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(43).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(44).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(45).png" alt="The_Comma" />
+                </div>
+                <div class="featured__img-wrapper">
+                    <img src="./img/스크린샷(39).png" alt="The_Comma" />
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="work container section"></section> -->
+
+        <div class="wrapper1">
+            <div class="itemLeft item1"><img src="./img/스크린샷(17).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item2"><img src="./img/스크린샷(27).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item3"><img src="./img/스크린샷(18).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item4"><img src="./img/스크린샷(28).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item5"><img src="./img/스크린샷(20).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item6"><img src="./img/스크린샷(29).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item7"><img src="./img/스크린샷(21).png" alt="Mr.Martens" /></div>
+            <div class="itemLeft item8"><img src="./img/스크린샷(30).png" alt="Mr.Martens" /></div>
+        </div>
+        <div class="wrapper2">
+            <div class="itemRight item1"><img src="./img/스크린샷(22).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item2"><img src="./img/스크린샷(31).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item3"><img src="./img/스크린샷(24).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item4"><img src="./img/스크린샷(32).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item5"><img src="./img/스크린샷(25).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item6"><img src="./img/스크린샷(33).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item7"><img src="./img/스크린샷(26).png" alt="Mr.Martens" /></div>
+            <div class="itemRight item8"><img src="./img/스크린샷(34).png" alt="Mr.Martens" /></div>
+        </div>
+
+        <section id="contact" class="contact container section">
+            <h2 class="contact__title">Get in Contact</h2>
+            <p class="contact__description">궁금한 점이 있다면 저는 <strong>언제나</strong> 연락을 받을 준비가 되어있습니다.
+            </p>
+            <div class="contact__btn-container">
+                <a class="contact__btn btn" href="mailto:gytae123@gmail.com"
+                    target="_blank">E-mail<br>gytae123@gmail.com</a>
+                <a class="contact__btn btn">Kakao-talk<br>ID: gytae123</a>
+                <a class="contact__btn btn">Phone<br>010-5021-7398</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer container section">
+        <!-- <h3 class="footer__title">~ 2024 고영태 ~</h3> -->
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>서울시 강남구 테헤란로14길 6<br>남도빌딩</p>
+                <p>Phone: (+82) 010-5021-7398</p>
+                <p>Email: gytae123@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>소셜 네트워크</h4>
+                <ul class="social-media">
+                    <li>
+                        <a href="#" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                                alt="Instagram" style="width:24px; height:24px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>뉴스레터</h4>
+                <form>
+                    <input type="email" placeholder="example@address.com">
+                    <button type="submit">구독하기</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ~ 2024 고영태 ~</p>
+        </div>
+    </footer>
+
+    <script src="./src/main.js"></script>
+    <script src="./src/utils/events.js"></script>
+    <!-- <script src="./src/utils/lazy-loading.js"></script> -->
+    <script src="./src/utils/dark-mode.js"></script>
+    <script src="./src/utils/mobile-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function checkScroll() {
+                var scrollPos = $(window).scrollTop();
+                var windowHeight = $(window).height();
+
+                $('.work__project-description1, .work__project-description2, .featured__info-container').each(function () {
+                    var elementTop = $(this).offset().top;
+
+                    if (scrollPos + windowHeight >= elementTop) {
+                        $(this).addClass('animate');
+                    } else {
+                        $(this).removeClass('animate');
+                    }
+                });
+            }
+
+            $(window).on('scroll', checkScroll);
+
+            // Initial check
+            checkScroll();
+        });
+
+        $(window).on('load', function () {
+            $('.work__project-description1, .work__project-description2, .featured__info-container').each(function () {
+                var elementTop = $(this).offset().top;
+                var windowHeight = $(window).height();
+                var scrollPos = $(window).scrollTop();
+
+                if (scrollPos + windowHeight >= elementTop) {
+                    $(this).addClass('animate');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
